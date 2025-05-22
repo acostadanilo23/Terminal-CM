@@ -32,7 +32,7 @@ class Character:
                 Boa sorte em sua jornada!
                 """)
         
-    def get_status(self):
+    def show_status(self):
         print(  f"""
                 ==========STATUS==========
                 Energia: {self.energy}/{self.initial_energy}
@@ -59,8 +59,10 @@ class Character:
         self.energy += amount        
         if self.energy > self.max_energy:
             self.energy = self.max_energy
-        print("Após comer, sua energia foi recuperada! Você se sente revigorado.")
-    
+            print(f"Você se sente revigorado ao máximo! Energia atual: {self.energy}/{self.max_energy}")
+        else:
+            print(f"Você recuperou {amount} de ENERGIA. Energia atual: {self.energy}/{self.max_energy}")    
+            
     def remove_luck(self):
         if self.luck > 0:
             self.luck -= 1
@@ -95,11 +97,24 @@ class Character:
         
     def add_gold(self, amount: int):
         self.gold += amount
-        print(f"você guardou {amount} OURO em seu bolso!")
+        print(f"Você encontrou {amount} peças de OURO. Total em seu bolso: {self.gold}!")
 
     def spend_gold(self, amount: int):
         if self.gold >= amount:
             self.gold -= amount
-            print(f"Você gastou {self.gold} OURO!")
+            print(f"Você gastou {amount} OURO! Total em seu bolso: {self.gold}!")
+            return True
+        else:
+            print(f"Você tem apenas {self.gold}, isto não é suficente!")
+            return False
         
-        pass
+    def use_provision(self):
+        if self.provisions > 0:
+            self.provisions -= 1
+            self.heal_energy(4)
+            print(f"Você usou uma provisão. Restam {self.provisions} provisão(ões).") # Mensagem mais clara
+            return True
+        else:
+            print("Você não tem provisões restantes para usar.") # Mensagem clara para falta de provisões
+            return False
+
