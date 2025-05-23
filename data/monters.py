@@ -1,162 +1,186 @@
-# data/monsters.py
-
-# A lista de monstros do Calabouço da Morte com seus atributos base.
-# Consideramos Habilidade (SKILL) e Energia (STAMINA) como os atributos principais.
-# Outras notas (como imunidades ou efeitos especiais) serão processadas na lógica do combate
-# ou em outras ações de parágrafo, não diretamente aqui nos atributos base.
-
 MONSTERS_DATA = {
-    "Vulto": {
+    1: {
+        "name": "Vulto",
         "habilidade": 6,
         "energia": 6,
         "notas": "Invisível."
     },
-    "Aranha Gigante": { # Para as duas aranhas, você invocaria este tipo duas vezes
+    2: {
+        "name": "Aranha Gigante",
         "habilidade": 7,
         "energia": 6,
         "notas": "Em combate com duas delas, combata uma de cada vez."
     },
-    "Orc": {
+    3: {
+        "name": "Orc",
         "habilidade": 5,
         "energia": 5,
         "notas": ""
     },
-    "Esqueleto": {
+    4: {
+        "name": "Esqueleto",
         "habilidade": 7,
         "energia": 5,
         "notas": ""
     },
-    "Guerreiro Zumbi": {
+    5: {
+        "name": "Guerreiro Zumbi",
         "habilidade": 7,
         "energia": 7,
         "notas": ""
     },
-    "Goblin": {
+    6: {
+        "name": "Goblin",
         "habilidade": 5,
         "energia": 4,
         "notas": ""
     },
-    "Morcego Gigante": {
+    7: {
+        "name": "Morcego Gigante",
         "habilidade": 6,
         "energia": 4,
         "notas": ""
     },
-    "Vampiro": {
+    8: {
+        "name": "Vampiro",
         "habilidade": 8,
         "energia": 8,
         "notas": "Se Energia < 4, tenta se transformar em Morcego para fugir (Parágrafo 159)."
     },
-    "Verme da Lama": {
+    9: {
+        "name": "Verme da Lama",
         "habilidade": 7,
         "energia": 7,
         "notas": ""
     },
-    "Fantasma": {
+    10: {
+        "name": "Fantasma",
         "habilidade": 8,
         "energia": 8,
         "notas": "Se falhar num Teste de Sorte quando atacado, perde 1 Sorte. Se passar, Fantasma é destruído."
     },
-    "Guerreiro Esqueleto": {
+    11: {
+        "name": "Guerreiro Esqueleto",
         "habilidade": 8,
         "energia": 6,
         "notas": ""
     },
-    "Homem-Lagarto": {
+    12: {
+        "name": "Homem-Lagarto",
         "habilidade": 6,
         "energia": 7,
         "notas": ""
     },
-    "Ogro": { # Para os dois ogros, você invocaria este tipo duas vezes
+    13: {
+        "name": "Ogro",
         "habilidade": 7,
         "energia": 8,
         "notas": "Em combate com dois, combata um de cada vez."
     },
-    "Gárgula": {
+    14: {
+        "name": "Gárgula",
         "habilidade": 8,
         "energia": 8,
         "notas": ""
     },
-    "Gigante": {
+    15: {
+        "name": "Gigante",
         "habilidade": 9,
         "energia": 10,
         "notas": ""
     },
-    "Homem-Porco": {
+    16: {
+        "name": "Homem-Porco",
         "habilidade": 7,
         "energia": 6,
         "notas": ""
     },
-    "Orc-Chefe": {
+    17: {
+        "name": "Orc-Chefe",
         "habilidade": 7,
         "energia": 6,
         "notas": ""
     },
-    "Guerreiro Orc": {
+    18: {
+        "name": "Guerreiro Orc",
         "habilidade": 6,
         "energia": 5,
         "notas": ""
     },
-    "Vaporizador": {
+    19: {
+        "name": "Vaporizador",
         "habilidade": 8,
         "energia": 7,
         "notas": "Se atingido, perde 1 ENERGIA extra por estar atordoado."
     },
-    "Centopeia Gigante": {
+    20: {
+        "name": "Centopeia Gigante",
         "habilidade": 6,
         "energia": 6,
         "notas": ""
     },
-    "Escorpião Gigante": {
+    21: {
+        "name": "Escorpião Gigante",
         "habilidade": 8,
         "energia": 7,
         "notas": ""
     },
-    "Criatura das Profundezas": {
+    22: {
+        "name": "Criatura das Profundezas",
         "habilidade": 9,
         "energia": 9,
         "notas": ""
     },
-    "Monstro Espectro": {
+    23: {
+        "name": "Monstro Espectro",
         "habilidade": 9,
         "energia": 10,
         "notas": "Se perder um Teste de Sorte quando atacado, perde 2 Sorte. Se passar, apenas 1."
     },
-    "Demônio da Cripta": {
+    24: {
+        "name": "Demônio da Cripta",
         "habilidade": 10,
         "energia": 10,
         "notas": ""
     },
-    "Morcego": { # Diferente do Morcego Gigante, são morcegos normais em bandos
+    25: {
+        "name": "Morcego",
         "habilidade": 5,
         "energia": 4,
         "notas": "Aparece em bandos, mas o combate é com um por vez (Parágrafo 303)."
     },
-    "Lobisomem": {
+    26: {
+        "name": "Lobisomem",
         "habilidade": 8,
         "energia": 9,
         "notas": "Imune a ataques normais. Precisa de espada de prata para dano total."
     },
-    "Minotauro": {
+    27: {
+        "name": "Minotauro",
         "habilidade": 9,
         "energia": 9,
         "notas": ""
     },
-    "Vigia-Chefe": { # Goblinoide
+    28: {
+        "name": "Vigia-Chefe",
         "habilidade": 7,
         "energia": 7,
         "notas": ""
     },
-    "Vigia": { # Goblinoide
+    29: {
+        "name": "Vigia",
         "habilidade": 6,
         "energia": 6,
         "notas": ""
     },
-    "Demônio Alado": {
+     30: {
+        "name": "Demônio Alado",
         "habilidade": 9,
         "energia": 8,
         "notas": ""
     },
-    "Barão Sukumvit": {
+    31: {
+        "name": "Barão Sukumvit",
         "habilidade": 12,
         "energia": 12,
         "notas": "Chefe final."
