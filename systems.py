@@ -39,8 +39,54 @@ def luck_test(player_character: 'Character'):
         print("Você deu azar. O teste de SORTE falhou.")
         return False
 
-def start_combat(player_character: 'Character', mosnter_data: dict):
-    current_monster_energy = mosnter_data[""]
+def start_combat(player_character: 'Character', monster_data: dict):
+    current_monster_energy = monster_data['energia']
+    Turno = 0
+    
+    print(f"Iniciando combate contra {monster_data}!")
+    print(f"""
+        
+            Você:{player_character.energy}/{player_character.initial_energy}
+            {monster_data}:{current_monster_energy}/{monster_data['energia']}
+        
+          """)
+    while player_character.energy > 0 and current_monster_energy > 0:
+        Turno += 1
+        print(f"Início do {Turno}° turno!")
+        player_FA = roll_dice(2) + player_character.skill
+        monster_FA = roll_dice(2) + monster_data["habilidade"]
+        
+        if player_FA > monster_FA:
+            current_monster_energy -= 2
+            lt = input("Gostaria de tentar a SORTE e causar mais dano? (s/n)")
+            if lt == 's':
+                lt_result = luck_test(player_character)
+                if lt_result:
+                    current_monster_energy -= 1
+                else:
+                    #do nothing
+                    pass
+            else:
+                #do nothing
+                pass
+        elif player_FA < monster_FA:
+            player_character.take_dmg(2)
+            if lt == 's':
+                lt_result = luck_test(player_character)
+                if lt_result:
+                    player_character.energy += 1
+                else:
+                    #do nothing
+                    pass
+            else:
+                #do nothing
+                pass
+        else:
+            #do nothing
+            pass
+        
+        
+        
+
     
     
-    pass
