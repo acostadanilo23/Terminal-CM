@@ -1,5 +1,7 @@
 import random
-import character as c
+import subprocess
+import platform
+from character import Character
 import data.paragraphs as p
 import data.monters as m
 import textwrap
@@ -10,46 +12,35 @@ def print_paragraphs(story_dict, *ids, width=80):
         texto_limpo = " ".join(texto.strip().split())
         print(textwrap.fill(texto_limpo, width=width))
         print("\n" + "-" * width + "\n")
+    
+def screen_clear():
+    os = platform.system()
+    if os == "Linux":
+        subprocess.run("clear")
+    elif os == "Windows":
+        subprocess.run("cls")
+    else:
+        subprocess.run("clear")
 
-def roll_dice():
-    dice_result = random.randint(1,6)
-    return dice_result
-    
+def roll_dice(amount):
+    roll_result = []
+    for i in range(amount):
+        roll = random.randint(1,6)
+        roll_result.append(roll)
+    return sum(roll_result)    
 
-def luck_test():
-    dice_1 = roll_dice()
-    dice_2 = roll_dice()
-    
-    dice_result = dice_1 + dice_2
-    
-    if c.Character.luck == dice_result:
+def luck_test(player_character: 'Character'):
+    dice_result = roll_dice(2)
+    player_character.remove_luck()
+    if dice_result <= player_character.luck:
+        print("Você deu sorte! O teste de SORTE foi concluído.")
         return True
     else:
+        print("Você deu azar. O teste de SORTE falhou.")
         return False
 
-
-def combat():
-    player_damage = c.skill + (roll_dice() + roll_dice())
-    monster_damage = m.skill + (roll_dice() + roll_dice())
+def start_combat(player_character: 'Character', mosnter_data: dict):
+    current_monster_energy = mosnter_data[""]
     
-    if player_damage > monster_damage:
-        m.energy -= 2
-        if luck_test():
-            m.energy -= 1
-            c.luck -= 1
-        
     
-
-#print(f"Foi sortudo? {luck_test()}")
-
-
-dados_goblin = m.MONSTERS_DATA["Aranha Gigante"]
-
-#print(f"Habilidade do Goblin: {dados_goblin['habilidade']}")
-#print(f"Energia do Goblin: {dados_goblin['energia']}")
-#print(f"Notas sobre o Goblin: {dados_goblin['notas']}")
-#print("\n\n\n\n\n")
-
-print(p.TITULOS[1]["texto"])
-#print("\n\n\n\n\n")
-print_paragraphs(p.STORY, 1,2,3,4,5,6,7,8,9,10)
+    pass
